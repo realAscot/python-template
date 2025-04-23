@@ -1,1 +1,16 @@
+# -*- coding: utf-8 -*-
+
+# falls man .env verwenden möchte:
 python-dotenv
+
+# Projektbezogen ab hier:
+
+
+# --- ALLES AB HIER IST OPTIONAL ---
+
+# Pytest, Linter und Typprüfung:
+pytest
+pytest-cov
+pytest-mock
+pylint
+mypy

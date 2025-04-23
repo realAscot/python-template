@@ -1,0 +1,24 @@
+{
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintArgs": ["--disable=C0114,C0115,C0116"],
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "python.analysis.typeCheckingMode": "basic",
+
+    // Abschliessende Leerzeichen entfernen:
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+
+    // Markdown für das Entfernen von abschliessenden Leerzeichen rausnehmen:
+    "[markdown]": {
+    "files.trimTrailingWhitespace": false
+    },
+    "[python]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+    }
+  }
