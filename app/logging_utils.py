@@ -29,7 +29,7 @@ def safe_log_level(level_str: str) -> int:
 
 
 LOGLEVEL = safe_log_level(os.getenv("LOGLEVEL", "INFO"))
-LOGFILE = os.getenv("LOGFILE")  # z. B. logs/app.log
+LOGFILE = os.getenv("LOGFILE", "log/app.log")  # z. B. logs/app.log
 
 
 def get_logger(name: str) -> logging.Logger:
@@ -49,6 +49,14 @@ def get_logger(name: str) -> logging.Logger:
     # Datei (optional)
     if LOGFILE:
         logfile_path = Path(LOGFILE)
+
+        # Debug: Logpfad anzeigen (nur bei DEBUG)
+        if logger.isEnabledFor(logging.DEBUG):
+            try:
+                logger.debug(f"Logdatei: {logfile_path.resolve()}")
+            except Exception:
+                pass  # Debug-Ausgabe darf nicht blockieren
+
         try:
             logfile_path.parent.mkdir(parents=True, exist_ok=True)
             file_handler = RotatingFileHandler(

@@ -8,7 +8,7 @@ python-dotenv
 
 # --- ALLES AB HIER IST OPTIONAL ---
 
-# Pytest, Linter und Typprüfung:
+# Pytest, Linter und Typ-Prüfung (entfernen bei fertigem Code):
 pytest
 pytest-cov
 pytest-mock

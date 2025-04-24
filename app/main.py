@@ -32,6 +32,8 @@ def logtest():
     """
     wirft testweise alle Logvarianten aus.
     """
+
+    print(f"\n[IFO] 📰 Loglevel: aus .env: {os.getenv('LOGFILE')}\n")
     log.info("Template ready.")
     log.debug("Dies ist eine Debug-Meldung.")
     log.warning("Dies ist eine Warnung.")

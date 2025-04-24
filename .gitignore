@@ -178,6 +178,7 @@ cython_debug/
 # Custom:
 logs/
 log/
-media/
+release/
+#media/
 *.zip
 

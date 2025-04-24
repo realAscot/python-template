@@ -1,7 +1,9 @@
-# Python Bootstrap-Template mit `.venv` und `.env` Support
+# Python Bootstrap-Template mit `.venv`- und `.env` Support
+
+![Logo](./media/logo.png)
 
 Dieses Template nutzt PEP 8, Type Hints, Docstrings und einen vordefinierten Workspace für sauberen Python-Code.  
-Ausserdem bietet es ein portables Start-Template für Python-Anwendungen mit folgenden Features:  
+Außerdem bietet es ein portables Start-Template für Python-Anwendungen mit folgenden Features:  
 
 - Automatische Erstellung einer virtuellen Umgebung (`.venv`)  
 - Automatische Installation von Abhängigkeiten aus `requirements.txt`  
@@ -9,21 +11,31 @@ Ausserdem bietet es ein portables Start-Template für Python-Anwendungen mit fol
 - Unterstützung von Umgebungsvariablen über eine `.env`-Datei  
 - Sauberer Einstiegspunkt über `run.py`  
 - Keine systemweiten Python-Pakete notwendig  
+- Logging-Utils bereits integriert  
 
 Das Template ist durchdacht, pragmatisch und stark auf Entwicklerkomfort ausgelegt.
-Es bietet eine sehr gute Grundlage für Projekte aller Art – insbesondere CLI-Tools, kleine Services und lokale Anwendungen.
-Die automatische Einrichtung der virtuellen Umgebung hebt es funktional deutlich von Standard-Vorlagen ab.  
+Es bietet eine sehr gute Grundlage für Projekte aller Art – insbesondere CLI-Tools, kleine Services und lokale Anwendungen. Die automatische Einrichtung der virtuellen Umgebung hebt es funktional deutlich von Standard-Vorlagen ab.  
+  
+**Was dieses template __nicht__ ist:**
+  
+- [ ] [pep-518](https://peps.python.org/pep-0518/)-konform 🚫  
+  
+> ⚠️ Dieses Template verfolgt kein komplexes Build-System.
+Es ist dafür gedacht, dir in Sekunden eine saubere, gekapselte Python-Umgebung bereitzustellen – perfekt zum schnellen Testen, Debuggen oder Projektstart.
+Einfach deinen Code in main.py werfen, bei Bedarf requirements.txt anpassen, run.py starten – fertig. Kein Setup-Wahnsinn, kein Overhead.
 
 ---
 
-- [Python Bootstrap-Template mit `.venv` und `.env` Support](#python-bootstrap-template-mit-venv-und-env-support)
+## 🔜 Inhalt der Readme
+
+- [Python Bootstrap-Template mit `.venv`- und `.env` Support](#python-bootstrap-template-mit-venv--und-env-support)
+  - [🔜 Inhalt der Readme](#-inhalt-der-readme)
   - [🔧 Projektstruktur](#-projektstruktur)
   - [🚀 Erste Schritte](#-erste-schritte)
     - [Beim ersten Start passiert:](#beim-ersten-start-passiert)
   - [📦 Abhängigkeiten](#-abhängigkeiten)
   - [⚙️ .env-Datei (optional)](#️-env-datei-optional)
   - [📜 Beispielausgabe](#-beispielausgabe)
-  - [🧼 Optional: `.env.example`](#-optional-envexample)
   - [🪵 Logging](#-logging)
     - [🔧 Konfiguration (in `.env`)](#-konfiguration-in-env)
     - [📥 Beispielausgabe](#-beispielausgabe-1)
@@ -31,7 +43,7 @@ Die automatische Einrichtung der virtuellen Umgebung hebt es funktional deutlich
     - [📁 Logrotation](#-logrotation)
   - [🛠 Hinweise](#-hinweise)
   - [🧪 Getestet mit](#-getestet-mit)
-  - [🛠 Einsatz Linter (`pylint`)](#-einsatz-linter-pylint)
+  - [🛠 Einsatz von `Linter` (`pylint`)](#-einsatz-von-linter-pylint)
   - [📁 Lizenz](#-lizenz)
 
 ---
@@ -48,17 +60,31 @@ Die automatische Einrichtung der virtuellen Umgebung hebt es funktional deutlich
 ├── 📄 .env.example        # Vorlage der .env  
 ├── 📄 requirements.txt    # Abhängigkeiten (z.B. python-dotenv)  
 ├── 📄 README.md           # diese Datei  
+├── 📄 CHANGELOG.md        #  
 ├── 📄 VERSION             # Versionsinfo zum Paket  
 ├── 📄 run.py              # Einstiegspunkt für die Anwendung  
-└── 📁 app/                #  
+├── 📁 media/
+│   └── 📄 logo.png        # Logo für GitHub  
+└── 📁 app/
     ├── 📄 __init__.py     #  
     ├── 📄 main.py         # Hauptlogik der Anwendung  
     └── 📄 bootstrap.py    # Setup- und Relaunch-Logik  
 ```
 
+> Release-Pakete als `.zip` sind bereits von unötigem Balast bereinigt. Die dargestellte Struktur entspricht einem `git clone`.
+
+[🔝](#-inhalt-der-readme)
+
 ---
 
 ## 🚀 Erste Schritte
+
+- [ ] `.env.example` in `.env` umbenennen und individuell befüllen.
+- [ ] `.vscode`-Verzeichnis löschen, wenn du eigene Einstellungen nutzt. Ich habe es versehentlich committet und aus Bequemlichkeit drin gelassen, weil es meinem Standard entspicht.
+- [ ] `requirements.txt` auf deine Bedürfnisse anpassen.
+- [ ] `media/`Verzeichnis Löschen falls vorhanden.
+
+**Erster Start des Templates:**
 
 ```bash
 python run.py
@@ -70,7 +96,11 @@ python run.py
 2. `requirements.txt` wird installiert  
 3. Das Skript wird automatisch innerhalb der venv neu gestartet  
 4. `.env` wird geladen (falls vorhanden)  
-5. Die App startet  
+5. **Die App startet 🚀**  
+
+> Es erfolgen einige Ausgaben, die alle aus der `main.py` stammen, außer du `DEBUG` in der `.env` aktiviert hast.  
+
+[🔝](#-inhalt-der-readme)
 
 ---
 
@@ -82,6 +112,8 @@ Alle Abhängigkeiten werden aus `requirements.txt` installiert.
 ```text
 python-dotenv
 ```
+
+[🔝](#-inhalt-der-readme)
 
 ---
 
@@ -98,6 +130,8 @@ PORT=8080
 
 Diese Werte sind im Code über `os.getenv("APP_MODE")` verfügbar.  
 
+[🔝](#-inhalt-der-readme)
+
 ---
 
 ## 📜 Beispielausgabe
@@ -111,17 +145,7 @@ Diese Werte sind im Code über `os.getenv("APP_MODE")` verfügbar.
 [APP] Hello, world!  
 ```
 
----
-
-## 🧼 Optional: `.env.example`
-
-Erstelle eine `.env.example`, um deine Konfiguration zu dokumentieren:  
-
-```dotenv
-APP_MODE=production
-PORT=8000
-LOGLEVEL=info
-```
+[🔝](#-inhalt-der-readme)
 
 ---
 
@@ -173,6 +197,8 @@ logs/app.log.1
 logs/app.log.2
 ```
 
+[🔝](#-inhalt-der-readme)
+
 ---
 
 ## 🛠 Hinweise
@@ -180,6 +206,8 @@ logs/app.log.2
 - Das Template ist portabel und benötigt keine global installierten Pakete.  
 - Du kannst es für jede neue App wiederverwenden.  
 - `run.py` ist der einzige Einstiegspunkt – keine direkten Aufrufe von `main.py`.  
+
+[🔝](#-inhalt-der-readme)
 
 ---
 
@@ -189,11 +217,11 @@ logs/app.log.2
 - Windows & Linux
 - VS Code, Terminal, PowerShell
 
+[🔝](#-inhalt-der-readme)
+
 ---
 
-## 🛠 Einsatz Linter (`pylint`)
-
-
+## 🛠 Einsatz von `Linter` (`pylint`)
 
 ```cmd
 PS C:\Users\adams\Documents\template> .\.venv\Scripts\activate
@@ -214,6 +242,8 @@ Your code has been rated at 8.33/10
 
 **Bonus:**  
 Durch den Einsatz der <.vscode/task.json> für VS-Code, kannst du in VS-Code mit `Strg + Umschalt + P` → `Tasks: Run Task` → `Linter (pylint)` oder `Typprüfung (mypy)` aufrufen.  
+
+[🔝](#-inhalt-der-readme)
 
 ---
 
